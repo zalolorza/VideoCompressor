@@ -32,6 +32,6 @@ It compresses a single master video file in different sizes and bitrates for web
       r[3]=3840
   ````
 4) Set permisions: from your terminal run `chmod +x video4web.sh` in the folder where you put the script and the video.
-5) Run the script: from your terminal run `./video4web.sh master.mp4` in the folder where you put the script and the video.
+5) Run the script: from your terminal run `./video4web.sh master.mp4 filename` in the folder where you put the script and the video. `filename` is the filename you want to give to the output files (it'll be something like `filename_1280_8MB.mp4`)
 
 Depending on your output settings and your original video, it can take a fair amount of time 
