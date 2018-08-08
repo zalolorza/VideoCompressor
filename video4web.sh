@@ -3,7 +3,7 @@
 # Based on solution found in: https://gist.github.com/jaydenseric/220c785d6289bcfd7366.
 
 # Set permisions: chmod +x video4web.sh
-# Example use: "./video4web.sh master.mp4".
+# Example use: "./video4web.sh master.mp4 filename".
 
 
 #codecs
@@ -58,7 +58,7 @@ for bitrate in $quality ; do
         fi
           
         
-        ffmpeg -i ${1} -c:v libx264 -b:v ${bitrate}M -vf scale=$resolution:-2 -maxrate ${bitrate}M -bufsize ${buffsize}M -pix_fmt yuv420p -tune zerolatency -profile:v baseline -level 3.0 -crf 17 -an -movflags +faststart -threads 0 matte_${resolution}_${bitrate}MB.mp4
+        ffmpeg -i ${1} -c:v libx264 -b:v ${bitrate}M -vf scale=$resolution:-2 -maxrate ${bitrate}M -bufsize ${buffsize}M -pix_fmt yuv420p -tune zerolatency -profile:v baseline -level 3.0 -crf 17 -an -movflags +faststart -threads 0 ${1}_${resolution}_${bitrate}MB.mp4
       
       done
   fi
@@ -82,7 +82,7 @@ for bitrate in $quality ; do
 
       if [ "$vp9_codec" = true ]; then
 
-        ffmpeg -i "$1" -c:v libvpx-vp9 -b:v ${bitrate}M -maxrate ${bitrate}M -vf scale=$resolution:-2 -crf 15 -an -quality good -speed 1 matte_${resolution}_${bitrate}MB.webm
+        ffmpeg -i "$1" -c:v libvpx-vp9 -b:v ${bitrate}M -maxrate ${bitrate}M -vf scale=$resolution:-2 -crf 15 -an -quality good -speed 1 ${$1}_${resolution}_${bitrate}MB.webm
         
       fi
 
@@ -91,7 +91,7 @@ for bitrate in $quality ; do
       # only for old browser compatibility reasons
 
       if [ "$vp8_codec" = true ]; then
-        ffmpeg -i "$1" -c:v libvpx -b:v ${bitrate}M -maxrate ${bitrate}M -vf scale=$resolution:-2 -crf 15 -an -threads 0 -quality good -speed 1 --cpu-used=1 matte_${resolution}_${bitrate}MB_vp8.webm
+        ffmpeg -i "$1" -c:v libvpx -b:v ${bitrate}M -maxrate ${bitrate}M -vf scale=$resolution:-2 -crf 15 -an -threads 0 -quality good -speed 1 --cpu-used=1 ${$1}_${resolution}_${bitrate}MB_vp8.webm
       fi
 
   done
