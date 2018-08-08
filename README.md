@@ -2,6 +2,8 @@
 
 It compresses a single master video file in different sizes and bitrates for web using [FFMPEG](https://www.ffmpeg.org/). It works in Linux an Mac, not shure about Windows (If it doesn't work in windows, you just need to adjust the arrays).
 
+After fighting a long time with video compression for websites I think this is the best approach. The codecs you need, the sizes and bitrates you need, correct MOOV atom position, reliable and adjustable, light videos but almost lossless in terms of human perception...
+
 ## How to use it
 
 1) Download and install [FFMPEG](https://www.ffmpeg.org/download.html)
